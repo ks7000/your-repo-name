@@ -22,6 +22,6 @@ jobs:
      runs-on: ubuntu-latest
      steps:
        - name: Install figlet
-         run: apt install -y figlet
+         run: sudo apt install -y figlet
        - name: Say hi
          run: figlet Hi girls, hello boys!
