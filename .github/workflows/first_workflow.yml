@@ -17,11 +17,30 @@ jobs:
 #      with:
 #        text: 'HELLO!'
 
-   second-job:
-     name: Hi girls hello boys
-     runs-on: ubuntu-latest
-     steps:
-       - name: Install figlet
-         run: sudo apt install -y figlet
-       - name: Say hi
-         run: figlet Hi girls, hello boys!
+#   second-job:
+#     name: Hi girls hello boys
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Install figlet
+#         run: sudo apt install -y figlet
+#       - name: Say hi
+#         run: figlet Hi girls, hello boys!
+    get-posts-job:
+      name: Get TDS posts
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Check-out th repo under $GITHUB_WORKSPACE
+          uses: actions/checkout@v2
+
+        - name: Set up Python 3.8
+          uses: actions/setup-python@v2
+          with:
+            python-version: '3.8'
+
+        - name: Install Scrapy
+          run: pip install scrapy
+
+        - name: Get TDS post about GitHub Actions 
+          run: scrapy runspider posts_spider.py -o posts.json
+    
