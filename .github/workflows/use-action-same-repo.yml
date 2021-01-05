@@ -1,0 +1,16 @@
+# .github/workflows/use-action-same-repo.yml
+
+name: Action from the same repo
+
+on: push
+
+jobs:
+  use-your-own-action:
+    name: Say Hi using your own action
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: ./
+          with:
+           user: 'Jimmy'
